@@ -1,4 +1,6 @@
 from flask import Flask  #statement to import the Flask() function#
+from app.routes import home
+from app.routes import home, dashboard
 
 def create_app(test_config=None): 
   # def keyword used to define the create_app() function.
@@ -11,6 +13,10 @@ def create_app(test_config=None):
   @app.route('/hello') #decorator - turns the hello() into a route
   def hello():
     return 'hello world'
+# register routes
+  app.register_blueprint(home)
+  app.register_blueprint(dashboard)
+ 
 # the above hello() returns a string
 #The funtions return becomes the route's response
 # the result browser link : http://127.0.0.1:5000/hello
